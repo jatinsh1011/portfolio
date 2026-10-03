@@ -55,7 +55,7 @@ const personJsonLd = {
   jobTitle: "Software Development Engineer",
   worksFor: { "@type": "Organization", name: "Newgen Software Technologies" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Maharaja Agrasen Institute of Technology" },
-  sameAs: [LINKS.github],
+  sameAs: [LINKS.github, LINKS.linkedin, LINKS.x],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

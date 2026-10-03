@@ -19,6 +19,20 @@ export function Contact() {
         >
           github.com/jatinsh1011
         </a>
+        <a
+          href={LINKS.linkedin}
+          rel="noopener noreferrer"
+          className="text-fg underline-offset-4 hover:underline"
+        >
+          LinkedIn
+        </a>
+        <a
+          href={LINKS.x}
+          rel="noopener noreferrer"
+          className="text-fg underline-offset-4 hover:underline"
+        >
+          X (@jatinsj710)
+        </a>
         {RESUME_HREF ? (
           <a href={RESUME_HREF} className="text-fg underline-offset-4 hover:underline">
             Resume (PDF)

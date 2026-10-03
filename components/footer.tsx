@@ -10,6 +10,14 @@ export function Footer() {
           <a className="text-muted hover:text-fg" href={LINKS.github} rel="noopener noreferrer">
             GitHub
           </a>
+          {" · "}
+          <a className="text-muted hover:text-fg" href={LINKS.linkedin} rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          {" · "}
+          <a className="text-muted hover:text-fg" href={LINKS.x} rel="noopener noreferrer">
+            X
+          </a>
         </p>
       </div>
     </footer>

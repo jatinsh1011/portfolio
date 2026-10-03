@@ -9,6 +9,8 @@ export const SITE_DESCRIPTION =
 
 export const LINKS = {
   github: "https://github.com/jatinsh1011",
+  linkedin: "https://www.linkedin.com/in/jatin-sharma-005902210/",
+  x: "https://x.com/jatinsj710",
   email: "mailto:jatinsj710@gmail.com",
   emailAddress: "jatinsj710@gmail.com",
 } as const;
