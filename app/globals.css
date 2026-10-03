@@ -10,7 +10,8 @@
   --color-faint: #6b6b74;
   --color-accent: #f5a524;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {
@@ -38,7 +39,11 @@ body::before {
     linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 30%,
+    transparent 75%
+  );
 }
 
 body::after {

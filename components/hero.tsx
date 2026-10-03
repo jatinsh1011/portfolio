@@ -16,15 +16,20 @@ export function Hero() {
           Jatin Sharma
         </h1>
         <p className="mt-5 max-w-xl text-2xl font-medium leading-snug tracking-tight text-fg/90 md:text-3xl">
-          I build products, systems and developer tools, and I want to know what runs underneath them.
+          I build products, systems and developer tools, and I want to know what
+          runs underneath them.
         </p>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-          Enterprise software by day, SaaS and tooling by night. Frontend, backend, infrastructure and
-          AI, with a standing curiosity about the layers below: networks, operating systems and memory.
+          Enterprise software by day, SaaS and tooling by night. Frontend,
+          backend, infrastructure and AI, with a standing curiosity about the
+          layers below: networks, operating systems and memory.
         </p>
 
         <div className="mt-9 flex flex-wrap gap-3">
-          <Link href="/#projects" className={`${btn} border-accent bg-accent text-black hover:bg-accent/90`}>
+          <Link
+            href="/#projects"
+            className={`${btn} border-accent bg-accent text-black hover:bg-accent/90`}
+          >
             View projects
           </Link>
           <a
@@ -35,19 +40,30 @@ export function Hero() {
             GitHub
           </a>
           {RESUME_HREF ? (
-            <a href={RESUME_HREF} className={`${btn} border-line-strong text-fg hover:border-fg`}>
+            <a
+              href={RESUME_HREF}
+              className={`${btn} border-line-strong text-fg hover:border-fg`}
+            >
               Resume
             </a>
           ) : null}
-          <Link href="/#contact" className={`${btn} border-line-strong text-fg hover:border-fg`}>
+          <Link
+            href="/#contact"
+            className={`${btn} border-line-strong text-fg hover:border-fg`}
+          >
             Contact
           </Link>
         </div>
       </div>
 
-      <aside aria-label="How I think about the stack" className="rounded-lg border border-line bg-surface/70">
+      <aside
+        aria-label="How I think about the stack"
+        className="rounded-lg border border-line bg-surface/70"
+      >
         <div className="flex items-center justify-between border-b border-line px-4 py-3">
-          <span className="font-mono text-xs text-faint">stack --top-to-bottom</span>
+          <span className="font-mono text-xs text-faint">
+            stack --top-to-bottom
+          </span>
           <span className="font-mono text-xs text-faint">6 layers</span>
         </div>
         <ol>
@@ -57,9 +73,13 @@ export function Hero() {
               className="group relative border-b border-line px-4 py-3.5 transition-colors last:border-b-0 hover:bg-white/[0.03]"
             >
               <div className="flex items-baseline gap-3">
-                <span className="w-5 font-mono text-xs text-faint">{String(i + 1).padStart(2, "0")}</span>
+                <span className="w-5 font-mono text-xs text-faint">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span className="font-medium text-fg">{layer.name}</span>
-                <span className="min-w-0 truncate font-mono text-xs text-muted">{layer.detail}</span>
+                <span className="min-w-0 truncate font-mono text-xs text-muted">
+                  {layer.detail}
+                </span>
               </div>
               <p className="mt-1 pl-8 text-sm text-faint transition-colors group-hover:text-muted">
                 {layer.note}

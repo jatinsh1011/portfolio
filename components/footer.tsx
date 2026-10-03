@@ -7,15 +7,27 @@ export function Footer() {
         <p>© {new Date().getFullYear()} Jatin Sharma</p>
         <p className="font-mono text-xs">
           Next.js, served by Caddy from a single VPS.{" "}
-          <a className="text-muted hover:text-fg" href={LINKS.github} rel="noopener noreferrer">
+          <a
+            className="text-muted hover:text-fg"
+            href={LINKS.github}
+            rel="noopener noreferrer"
+          >
             GitHub
           </a>
           {" · "}
-          <a className="text-muted hover:text-fg" href={LINKS.linkedin} rel="noopener noreferrer">
+          <a
+            className="text-muted hover:text-fg"
+            href={LINKS.linkedin}
+            rel="noopener noreferrer"
+          >
             LinkedIn
           </a>
           {" · "}
-          <a className="text-muted hover:text-fg" href={LINKS.x} rel="noopener noreferrer">
+          <a
+            className="text-muted hover:text-fg"
+            href={LINKS.x}
+            rel="noopener noreferrer"
+          >
             X
           </a>
         </p>

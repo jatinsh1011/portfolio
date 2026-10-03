@@ -16,7 +16,9 @@ function Card({ project, large }: { project: Project; large: boolean }) {
         <span>{project.kind}</span>
       </div>
 
-      <h3 className={`mt-5 font-semibold tracking-tight text-fg ${large ? "text-3xl" : "text-xl"}`}>
+      <h3
+        className={`mt-5 font-semibold tracking-tight text-fg ${large ? "text-3xl" : "text-xl"}`}
+      >
         <Link
           href={`/projects/${project.slug}/`}
           className="after:absolute after:inset-0 after:content-[''] focus-visible:after:rounded-lg"
@@ -29,7 +31,10 @@ function Card({ project, large }: { project: Project; large: boolean }) {
 
       <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technology">
         {project.stack.slice(0, large ? 8 : 5).map((t) => (
-          <li key={t} className="rounded border border-line px-2 py-0.5 font-mono text-xs text-muted">
+          <li
+            key={t}
+            className="rounded border border-line px-2 py-0.5 font-mono text-xs text-muted"
+          >
             {t}
           </li>
         ))}

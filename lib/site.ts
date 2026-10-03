@@ -16,6 +16,8 @@ export const LINKS = {
 } as const;
 
 // Resume link only renders if public/resume.pdf exists at build time.
-export const RESUME_HREF = existsSync(join(process.cwd(), "public", "resume.pdf"))
+export const RESUME_HREF = existsSync(
+  join(process.cwd(), "public", "resume.pdf"),
+)
   ? "/resume.pdf"
   : null;

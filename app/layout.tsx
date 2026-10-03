@@ -3,10 +3,24 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { LINKS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
+import {
+  LINKS,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/site";
 
-const sans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
-const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const sans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+const mono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -54,11 +68,18 @@ const personJsonLd = {
   url: SITE_URL,
   jobTitle: "Software Development Engineer",
   worksFor: { "@type": "Organization", name: "Newgen Software Technologies" },
-  alumniOf: { "@type": "CollegeOrUniversity", name: "Maharaja Agrasen Institute of Technology" },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Maharaja Agrasen Institute of Technology",
+  },
   sameAs: [LINKS.github, LINKS.linkedin, LINKS.x],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body className="min-h-screen antialiased">

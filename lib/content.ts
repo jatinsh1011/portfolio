@@ -48,7 +48,11 @@ export const journey: { label: string; state: "worked" | "exploring" }[] = [
 export const migrations: { area: string; steps: string[]; note?: string }[] = [
   { area: "React", steps: ["17", "18", "19"] },
   { area: "MUI", steps: ["v4", "v5", "v7"] },
-  { area: "Bundler", steps: ["Webpack 4", "Webpack 5", "Vite"], note: "Vite is in progress" },
+  {
+    area: "Bundler",
+    steps: ["Webpack 4", "Webpack 5", "Vite"],
+    note: "Vite is in progress",
+  },
   { area: "Java", steps: ["17", "21"] },
 ];
 
@@ -82,7 +86,8 @@ export const newgen = {
   ],
   environment:
     "Deployments span on-premise and cloud setups on AWS, Azure and GCP, running on JBoss EAP or WebSphere against PostgreSQL, Oracle and Redis.",
-  backend: "Spring Boot, REST APIs, FreeMarker templates, Docker and CI/CD pipelines.",
+  backend:
+    "Spring Boot, REST APIs, FreeMarker templates, Docker and CI/CD pipelines.",
 };
 
 export const lab: { title: string; body: string }[] = [
@@ -124,8 +129,17 @@ export const stack: { group: string; items: string[] }[] = [
   { group: "Languages", items: ["JavaScript", "TypeScript", "Java", "C++"] },
   { group: "Frontend", items: ["React", "Next.js", "Vite", "MUI", "Tailwind"] },
   { group: "Backend", items: ["Node.js", "NestJS", "Express", "Spring Boot"] },
-  { group: "Data", items: ["MongoDB", "PostgreSQL", "MySQL", "Oracle", "Redis"] },
-  { group: "Infrastructure", items: ["Docker", "Jenkins", "AWS", "Linux", "Caddy", "Nginx", "JBoss"] },
-  { group: "Systems", items: ["TCP/IP", "HTTP", "TLS", "Linux", "C++", "Networking"] },
+  {
+    group: "Data",
+    items: ["MongoDB", "PostgreSQL", "MySQL", "Oracle", "Redis"],
+  },
+  {
+    group: "Infrastructure",
+    items: ["Docker", "Jenkins", "AWS", "Linux", "Caddy", "Nginx", "JBoss"],
+  },
+  {
+    group: "Systems",
+    items: ["TCP/IP", "HTTP", "TLS", "Linux", "C++", "Networking"],
+  },
   { group: "AI", items: ["LLMs", "AI APIs", "AI developer tooling", "Agents"] },
 ];

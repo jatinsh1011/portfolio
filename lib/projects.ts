@@ -80,8 +80,14 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Live site", href: "https://tasking.co.in/" },
-      { label: "Frontend repo", href: "https://github.com/jatinsh1011/tasking-frontend" },
-      { label: "Backend repo", href: "https://github.com/jatinsh1011/tasking-backend" },
+      {
+        label: "Frontend repo",
+        href: "https://github.com/jatinsh1011/tasking-frontend",
+      },
+      {
+        label: "Backend repo",
+        href: "https://github.com/jatinsh1011/tasking-backend",
+      },
     ],
   },
   {
@@ -121,7 +127,17 @@ export const projects: Project[] = [
     ],
     result:
       "Live at dependencydoctor.in, a working example of AI integrated into a developer workflow as one step in a pipeline, not the whole product.",
-    stack: ["Next.js", "React", "TypeScript", "Node.js", "Zod", "semver", "OSV API", "LLM APIs", "Docker"],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Zod",
+      "semver",
+      "OSV API",
+      "LLM APIs",
+      "Docker",
+    ],
     flow: [
       { label: "package.json" },
       { label: "Parse + validate", note: "Zod" },
@@ -132,7 +148,10 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Live site", href: "https://dependencydoctor.in/" },
-      { label: "GitHub", href: "https://github.com/jatinsh1011/Dependency-doctor" },
+      {
+        label: "GitHub",
+        href: "https://github.com/jatinsh1011/Dependency-doctor",
+      },
     ],
   },
   {
@@ -166,7 +185,13 @@ export const projects: Project[] = [
     ],
     result:
       "A debugging tool for real web apps, deliberately upfront about what a browser lets an extension see.",
-    stack: ["JavaScript", "Chrome Extensions", "Manifest V3", "Service Workers", "chrome.storage"],
+    stack: [
+      "JavaScript",
+      "Chrome Extensions",
+      "Manifest V3",
+      "Service Workers",
+      "chrome.storage",
+    ],
     flow: [
       { label: "Page", note: "fetch / XHR / beacon" },
       { label: "Capture script", note: "MAIN world" },
@@ -174,7 +199,9 @@ export const projects: Project[] = [
       { label: "Service worker", note: "chrome.storage" },
       { label: "JSON export" },
     ],
-    links: [{ label: "GitHub", href: "https://github.com/jatinsh1011/networkLogger" }],
+    links: [
+      { label: "GitHub", href: "https://github.com/jatinsh1011/networkLogger" },
+    ],
   },
   {
     slug: "rtl-migrate",
@@ -208,7 +235,15 @@ export const projects: Project[] = [
     ],
     result:
       "Published on npm: a repetitive, error-prone manual migration turned into a reviewable codemod.",
-    stack: ["Node.js", "Babel", "recast", "PostCSS", "Commander", "Vitest", "npm"],
+    stack: [
+      "Node.js",
+      "Babel",
+      "recast",
+      "PostCSS",
+      "Commander",
+      "Vitest",
+      "npm",
+    ],
     flow: [
       { label: "Glob of files" },
       { label: "Parse", note: "Babel / PostCSS" },
@@ -262,7 +297,9 @@ export const projects: Project[] = [
       { label: "Health-aware round robin" },
       { label: "Backend x3" },
     ],
-    links: [{ label: "GitHub", href: "https://github.com/jatinsh1011/FluxGate" }],
+    links: [
+      { label: "GitHub", href: "https://github.com/jatinsh1011/FluxGate" },
+    ],
   },
 ];
 
