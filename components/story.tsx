@@ -4,7 +4,11 @@ import { journey } from "@/lib/content";
 
 export function Story() {
   return (
-    <Section id="story" eyebrow="Story" title="Haha">
+    <Section
+      id="story"
+      eyebrow="Story"
+      title="I don't just want to use abstractions. I want to understand what is underneath them."
+    >
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_1fr]">
         <Reveal className="space-y-5 text-lg leading-relaxed text-muted">
           <p>
