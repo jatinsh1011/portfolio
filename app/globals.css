@@ -146,20 +146,18 @@ html {
   .role .numeral { font-size: clamp(3.5rem, 6vw, 5.5rem); }
   .role .plan-hero p:not(.numeral) { font-size: 17px; line-height: 1.6; }
   .role-intro { color: var(--muted); line-height: 1.75; }
+  .role-work { line-height: 1.75; }
   .mini-label { font-size: 13px; font-weight: 700; margin: 22px 0 10px; }
-  .migrations-title { margin: 64px 0 22px; }
-  .migrations { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-  .migration { gap: 14px; }
-  .migration h4 { font: 900 22px/1.1 var(--round); letter-spacing: -.035em; margin-top: 6px; }
-  .steps-row { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0; }
-  .step-pill { display: inline-block; padding: 4px 10px; border-radius: var(--r-pill); background: var(--quiet); color: var(--muted); font-size: 13px; font-weight: 650; }
-  .step-pill.is-now { background: var(--amber); color: var(--amber-ink); box-shadow: 0 2px var(--amber-edge); }
-  .step-arrow { color: var(--muted); font-size: 13px; }
-  .migration .pill-soon { font-size: 13px; padding: 5px 12px; justify-self: start; }
+  .capabilities-title { margin: 64px 0 22px; }
+  .capabilities { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .capability { display: flex; flex-direction: column; gap: 14px; }
+  .capability h4 { font: 900 22px/1.15 var(--round); letter-spacing: -.035em; margin-top: 6px; text-wrap: balance; }
+  .capability p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+  .capability .tag-row { margin-top: auto; padding-top: 4px; }
   .experience-notes { margin-top: 30px; display: grid; gap: 6px; text-align: center; justify-items: center; }
   .experience-notes p { max-width: 70ch; }
-  @media (width <= 1100px) { .migrations { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (width <= 560px) { .migrations { grid-template-columns: 1fr; } }
+  @media (width <= 1100px) { .capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (width <= 560px) { .capabilities { grid-template-columns: 1fr; } }
 
   /* ---- lab ---- */
   .lab-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

@@ -45,49 +45,58 @@ export const journey: { label: string; state: "worked" | "exploring" }[] = [
   { label: "AI infrastructure", state: "exploring" },
 ];
 
-export const migrations: { area: string; steps: string[]; note?: string }[] = [
-  { area: "React", steps: ["17", "18", "19"] },
-  { area: "MUI", steps: ["v4", "v5", "v7"] },
-  {
-    area: "Bundler",
-    steps: ["Webpack 4", "Webpack 5", "Vite"],
-    note: "Vite is in progress",
-  },
-  { area: "Java", steps: ["17", "21"] },
-];
-
+// Product facts follow Newgen's public investor material (figures as of March 2026).
 export const newgen = {
   company: "Newgen Software Technologies",
   role: "SDE-2",
   product: "NewgenONE",
+  summary:
+    "Building NewgenONE at Newgen Software: one enterprise platform for content, process and customer communication.",
   intro:
-    "NewgenONE is an enterprise platform. I work across its frontend, backend and platform layers on major releases and patches, which means the work spans new features, long-running migrations, production issues, internal QA findings and client requirements.",
+    "NewgenONE is Newgen’s enterprise platform for banks, financial institutions, insurers and governments. It brings content management, business process management and customer communication management together, with business rules, document intelligence and AI agents built on top, and it is used by around 500 enterprises across 79 countries.",
+  work: "I build across its frontend, backend and platform layers: features for major releases, client requirements, production fixes and performance work, while keeping a large product modern as it keeps shipping.",
   areas: [
     "NewgenONE Workspace",
     "Business Admin",
-    "Custom Workspace",
-    "Queue Management",
-    "Criteria Management",
-    "Advanced Search",
-    "WorkItemList",
-    "Multilingual support",
+    "Queue and criteria management",
+    "Advanced search",
+    "Multilingual and RTL support",
     "Themes",
   ],
   scope: [
     "Frontend",
     "Backend",
     "Platform",
-    "Enterprise deployments",
-    "Migrations",
-    "Debugging",
-    "QA and client requirements",
-    "Performance",
     "Microfrontends",
+    "Enterprise deployments",
+    "Performance",
   ],
-  environment:
-    "Deployments span on-premise and cloud setups on AWS, Azure and GCP, running on JBoss EAP or WebSphere against PostgreSQL, Oracle and Redis.",
-  backend:
-    "Spring Boot, REST APIs, FreeMarker templates, Docker and CI/CD pipelines.",
+  capabilities: [
+    {
+      title: "Content, process, communication",
+      body: "ECM, BPM and CCM in one low-code platform, with business rules, document intelligence and AI agents on top.",
+      items: ["ECM", "BPM", "CCM", "Business rules", "AI agents"],
+    },
+    {
+      title: "Any cloud, or on-premise",
+      body: "The same product ships to public cloud, private data centres and hybrid setups.",
+      items: ["AWS", "Azure", "Google Cloud", "On-premise", "Hybrid"],
+    },
+    {
+      title: "Enterprise app servers",
+      body: "Deployed on the Java application servers banks already run.",
+      items: ["Red Hat JBoss EAP", "IBM WebSphere"],
+    },
+    {
+      title: "Enterprise databases",
+      body: "Runs on the databases regulated institutions standardise on.",
+      items: ["Oracle", "PostgreSQL", "MySQL", "Redis cache"],
+    },
+  ],
+  stack:
+    "Under the hood: Java and Spring Boot services, REST APIs, FreeMarker templates, React and MUI microfrontends, Docker and CI/CD pipelines.",
+  alongside:
+    "Alongside features: microfrontend compatibility, theme architecture, RTL support, and platform-wide React, MUI and Java upgrades.",
 };
 
 export const lab: { title: string; body: string }[] = [
