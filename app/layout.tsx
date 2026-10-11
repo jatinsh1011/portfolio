@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hurricane, Nunito } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { SiteEffects } from "@/components/site-effects";
 import {
   LINKS,
   SITE_DESCRIPTION,
@@ -11,14 +12,18 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-const sans = Geist({
-  variable: "--font-geist-sans",
+// Rounded display fallback where Arial Rounded MT Bold isn't installed (Windows, Android, Linux).
+const rounded = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
+  weight: ["800", "900"],
   display: "swap",
 });
-const mono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Handwritten signature under the story.
+const script = Hurricane({
+  variable: "--font-hurricane",
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -57,8 +62,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0b0c",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fffdf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#191a1d" },
+  ],
+  colorScheme: "light dark",
 };
 
 const personJsonLd = {
@@ -75,23 +83,31 @@ const personJsonLd = {
   sameAs: [LINKS.github, LINKS.linkedin, LINKS.x],
 };
 
+// Apply a saved light/dark choice before first paint; without one the site follows the OS.
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
-      <body className="min-h-screen antialiased">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-black"
-        >
+    <html
+      lang="en"
+      className={`${rounded.variable} ${script.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>
+        <a href="#main" className="skip-link">
           Skip to content
         </a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <SiteEffects />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

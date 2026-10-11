@@ -1,99 +1,96 @@
-import { Section } from "@/components/section";
-import { Reveal } from "@/components/reveal";
+import type { CSSProperties } from "react";
+import { Icon, type IconName } from "@/components/icons";
 import { migrations, newgen } from "@/lib/content";
 
-function Chip({ children }: { children: string }) {
-  return (
-    <li className="rounded border border-line px-2.5 py-1 text-sm text-muted">
-      {children}
-    </li>
-  );
-}
+const MIGRATION_LOOK: Record<string, { icon: IconName; tint: string }> = {
+  React: { icon: "layers", tint: "var(--c-blue)" },
+  MUI: { icon: "palette", tint: "var(--c-purple)" },
+  Bundler: { icon: "package", tint: "var(--c-orange)" },
+  Java: { icon: "coffee", tint: "var(--c-pink)" },
+};
 
 export function Experience() {
   return (
-    <Section
-      id="experience"
-      eyebrow="Enterprise software"
-      title="Keeping a large platform current while it keeps shipping."
-    >
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.1fr]">
-        <Reveal>
-          <p className="font-mono text-xs text-faint">{newgen.company}</p>
-          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-fg">
-            {newgen.role} · {newgen.product}
-          </h3>
-          <p className="mt-4 leading-relaxed text-muted">{newgen.intro}</p>
+    <section id="experience" className="band" aria-labelledby="experience-title">
+      <div className="wrap">
+        <div className="band-head">
+          <p className="eyebrow">{newgen.company}</p>
+          <h2 id="experience-title" className="title">
+            keeping a big platform current
+            <br />
+            <span className="accent-pink">while it keeps shipping.</span>
+          </h2>
+        </div>
 
-          <h4 className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-faint">
-            Product areas
-          </h4>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {newgen.areas.map((a) => (
-              <Chip key={a}>{a}</Chip>
-            ))}
-          </ul>
+        <div className="plan role">
+          <div className="plan-hero">
+            <p className="numeral">{newgen.role}.</p>
+            <p>
+              On {newgen.product}, an enterprise platform: frontend, backend and platform work on
+              major releases and patches.
+            </p>
+          </div>
+          <div className="plan-list">
+            <p className="role-intro">{newgen.intro}</p>
+            <div>
+              <h3 className="mini-label">product areas</h3>
+              <ul className="tag-row">
+                {newgen.areas.map((a) => (
+                  <li key={a} className="tag">
+                    {a}
+                  </li>
+                ))}
+              </ul>
+              <h3 className="mini-label">across</h3>
+              <ul className="tag-row">
+                {newgen.scope.map((a) => (
+                  <li key={a} className="tag">
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
 
-          <h4 className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-faint">
-            Across
-          </h4>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {newgen.scope.map((a) => (
-              <Chip key={a}>{a}</Chip>
-            ))}
-          </ul>
-
-          <p className="mt-8 text-sm leading-relaxed text-faint">
-            {newgen.backend} {newgen.environment}
-          </p>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <h4 className="font-mono text-xs uppercase tracking-[0.16em] text-faint">
-            Major migrations
-          </h4>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-            {migrations.map((m) => (
-              <div
-                key={m.area}
-                className="rounded-lg border border-line bg-surface/60 p-4"
-              >
-                <p className="font-mono text-xs text-accent">{m.area}</p>
-                <ol
-                  className="mt-3 space-y-1.5"
-                  aria-label={`${m.area} migration path`}
-                >
+        <h3 className="tile-title migrations-title">major migrations.</h3>
+        <div className="migrations">
+          {migrations.map((m) => {
+            const look = MIGRATION_LOOK[m.area] ?? { icon: "layers", tint: "var(--c-blue)" };
+            return (
+              <div key={m.area} className="option-card migration">
+                <span className="icon-tile" style={{ "--tint": look.tint } as CSSProperties}>
+                  <Icon name={look.icon} />
+                </span>
+                <h4>{m.area}</h4>
+                <ol className="steps-row" aria-label={`${m.area} migration path`}>
                   {m.steps.map((s, i) => (
-                    <li key={s} className="text-sm">
-                      <span
-                        className={
-                          i === m.steps.length - 1 ? "text-fg" : "text-muted"
-                        }
-                      >
-                        {s}
-                      </span>
+                    <li key={s}>
+                      <span className={i === m.steps.length - 1 ? "step-pill is-now" : "step-pill"}>{s}</span>
                       {i < m.steps.length - 1 ? (
-                        <span aria-hidden className="block pl-1 text-faint">
-                          ↓
+                        <span className="step-arrow" aria-hidden="true">
+                          {" "}→
                         </span>
                       ) : null}
                     </li>
                   ))}
                 </ol>
-                {m.note ? (
-                  <p className="mt-3 font-mono text-[11px] text-faint">
-                    {m.note}
-                  </p>
-                ) : null}
+                {m.note ? <span className="pill-soon">{m.note}</span> : null}
               </div>
-            ))}
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-faint">
-            Alongside these: microfrontend compatibility, theme architecture,
-            and CSS and RTL work that had to hold across the whole product.
+            );
+          })}
+        </div>
+
+        <div className="experience-notes">
+          <p className="note">
+            Alongside these: microfrontend compatibility, theme architecture, and CSS and RTL work
+            that had to hold across the whole product.
           </p>
-        </Reveal>
+          <p className="note">
+            {newgen.backend} {newgen.environment}
+          </p>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
