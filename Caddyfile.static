@@ -19,6 +19,8 @@
 	# 2026-10-24: NetworkLogger and RTL-Migrate became one "Development tools" page; FluxGate left the site
 	@oldtools path /projects/networklogger /projects/networklogger/ /projects/rtl-migrate /projects/rtl-migrate/
 	redir @oldtools /projects/developer-tools/ permanent
+	@aidev path /projects/aidev /projects/aidev/
+	redir @aidev /projects/aidevkit/ permanent
 	@fluxgate path /projects/fluxgate /projects/fluxgate/
 	redir @fluxgate /#projects permanent
 

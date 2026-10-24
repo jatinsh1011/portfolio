@@ -28,7 +28,7 @@ export function Hero() {
             <span className="accent">and the layers under them.</span>
           </h1>
           <p className="lede">
-            Enterprise software by day; by night, aidev, a package manager for AI agents, skills and
+            Enterprise software by day; by night, aidevkit, a package manager for AI agents, skills and
             MCP servers, plus SaaS and developer tools. Frontend, backend, infrastructure and AI, with a
             standing curiosity about the layers below: networks, operating systems and memory.
           </p>

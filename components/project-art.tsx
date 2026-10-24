@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 
 /** Pastel panel tone per project (blue is the panel default). */
 export const PROJECT_TONE: Record<string, string> = {
-  aidev: "",
+  aidevkit: "",
   tasking: "tone-orange",
   "dependency-doctor": "tone-pink",
   "developer-tools": "tone-green",
@@ -13,11 +13,11 @@ const tilt = (deg: number) => ({ "--tilt": `${deg}deg` }) as CSSProperties;
 /** Each project drawn as a small fragment of its own UI or output, not as artwork. */
 export function ProjectArt({ slug }: { slug: string }) {
   switch (slug) {
-    case "aidev":
+    case "aidevkit":
       return (
         <div className="art">
           <div className="terminal" style={tilt(-1.5)}>
-            <div><span className="t-dim">$</span> aidev install github-mcp-server</div>
+            <div><span className="t-dim">$</span> aidevkit install github-mcp-server</div>
             <div><span className="t-ok">✓</span> Target: GitHub Copilot</div>
             <div><span className="t-ok">✓</span> Rollback point created</div>
             <div><span className="t-ok">✓</span> Configuration updated</div>

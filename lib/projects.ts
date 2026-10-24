@@ -22,9 +22,9 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "aidev",
+    slug: "aidevkit",
     index: "01",
-    title: "aidev",
+    title: "aidevkit",
     kind: "Developer platform · AI tooling",
     featured: true,
     summary:
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     problem:
       "Every AI coding tool keeps its agents, skills and MCP configuration in its own folders and formats. Reusing one across tools meant copying files by hand, with no view of what a piece could access and no clean way to undo it.",
     built: [
-      "The aidev CLI: it resolves a listing, shows the permissions it asks for, writes the configuration each tool expects and records a rollback point.",
+      "The aidevkit CLI (aidevkit-cli on npm): it resolves a listing, shows the permissions it asks for, writes the configuration each tool expects and records a rollback point.",
       "Provider adapters for GitHub Copilot, Claude Code and Codex behind one plan, apply, backup and rollback engine, with a lockfile and version locking.",
       "A NestJS registry API on Postgres (PGlite in development) with accounts, organisations, policies and usage events.",
       "A Next.js and Tailwind discovery site with 30,000+ real listings imported from the official MCP Registry and permissively licensed collections.",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       "Caddy",
     ],
     flow: [
-      { label: "aidev CLI", note: "search, install" },
+      { label: "aidevkit CLI", note: "search, install" },
       { label: "Caddy", note: "/v1 to the API" },
       { label: "Registry API", note: "NestJS + Postgres" },
       { label: "Provider adapter", note: "Copilot, Claude Code, Codex" },
@@ -88,6 +88,7 @@ export const projects: Project[] = [
         label: "GitHub",
         href: "https://github.com/jatinsh1011/ai-development-hub",
       },
+      { label: "npm", href: "https://www.npmjs.com/package/aidevkit-cli" },
     ],
   },
   {
