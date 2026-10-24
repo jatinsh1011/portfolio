@@ -48,10 +48,11 @@ export const journey: { label: string; state: "worked" | "exploring" }[] = [
 // Product facts follow Newgen's public investor material (figures as of March 2026).
 export const newgen = {
   company: "Newgen Software Technologies",
-  role: "SDE-2",
+  role: "Senior SDE",
+  title: "Senior Software Design Engineer",
   product: "NewgenONE",
   summary:
-    "Building NewgenONE at Newgen Software: one enterprise platform for content, process and customer communication.",
+    "Building NewgenONE at Newgen Software: one enterprise platform for content, process and customer communication. Promoted from SDE-2 to Senior SDE in July 2026.",
   intro:
     "NewgenONE is Newgen’s enterprise platform for banks, financial institutions, insurers and governments. It brings content management, business process management and customer communication management together, with business rules, document intelligence and AI agents built on top, and it is used by around 500 enterprises across 79 countries.",
   work: "I build across its frontend, backend and platform layers: features for major releases, client requirements, production fixes and performance work, while keeping a large product modern as it keeps shipping.",

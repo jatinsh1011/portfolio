@@ -63,11 +63,13 @@ export function ProjectsSection() {
             <Card key={p.slug} project={p} large />
           ))}
         </div>
-        <div className="project-grid is-rest">
-          {rest.map((p) => (
-            <Card key={p.slug} project={p} large={false} />
-          ))}
-        </div>
+        {rest.length > 0 && (
+          <div className="project-grid is-rest">
+            {rest.map((p) => (
+              <Card key={p.slug} project={p} large={false} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

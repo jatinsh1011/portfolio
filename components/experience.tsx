@@ -16,7 +16,7 @@ export function Experience() {
       <div className="wrap">
         <div className="band-head">
           <p className="eyebrow">
-            {newgen.company} · {newgen.role}
+            {newgen.company} · {newgen.title}
           </p>
           <h2 id="experience-title" className="title">
             building {newgen.product}.

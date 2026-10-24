@@ -21,16 +21,16 @@ export function Hero() {
     <>
       <section className="wrap hero" aria-labelledby="hero-title">
         <div>
-          <p className="eyebrow hero-eyebrow">Jatin Sharma · SDE-2 at Newgen Software</p>
+          <p className="eyebrow hero-eyebrow">Jatin Sharma · Senior Software Design Engineer at Newgen Software</p>
           <h1 id="hero-title" className="display">
             products, tools,
             <br />
             <span className="accent">and the layers under them.</span>
           </h1>
           <p className="lede">
-            Enterprise software by day, SaaS and developer tools by night. Frontend, backend,
-            infrastructure and AI, with a standing curiosity about the layers below: networks,
-            operating systems and memory.
+            Enterprise software by day; by night, aidev, a package manager for AI agents, skills and
+            MCP servers, plus SaaS and developer tools. Frontend, backend, infrastructure and AI, with a
+            standing curiosity about the layers below: networks, operating systems and memory.
           </p>
           <div className="chips" aria-label="What I work on">
             <span className="chip chip-peach">frontend</span>

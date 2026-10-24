@@ -22,8 +22,77 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "tasking",
+    slug: "aidev",
     index: "01",
+    title: "aidev",
+    kind: "Developer platform · AI tooling",
+    featured: true,
+    summary:
+      "A package manager and public hub for AI agents, skills and MCP servers: one command installs a building block into Claude Code, GitHub Copilot or Codex, and one command takes it back out.",
+    problem:
+      "Every AI coding tool keeps its agents, skills and MCP configuration in its own folders and formats. Reusing one across tools meant copying files by hand, with no view of what a piece could access and no clean way to undo it.",
+    built: [
+      "The aidev CLI: it resolves a listing, shows the permissions it asks for, writes the configuration each tool expects and records a rollback point.",
+      "Provider adapters for GitHub Copilot, Claude Code and Codex behind one plan, apply, backup and rollback engine, with a lockfile and version locking.",
+      "A NestJS registry API on Postgres (PGlite in development) with accounts, organisations, policies and usage events.",
+      "A Next.js and Tailwind discovery site with 30,000+ real listings imported from the official MCP Registry and permissively licensed collections.",
+      "An artifact schema with semver, validation, content hashing and a security scanner that rejects risky content.",
+    ],
+    decisions: [
+      {
+        title: "Real data, never invented",
+        body: "Every listing is imported from a public source with its license, and install counts start at zero. Collections come in only when their content is permissively licensed, and imported listings are labelled as not reviewed.",
+      },
+      {
+        title: "Skip, never guess",
+        body: "MCP servers whose connection needs templated URLs, headers or user-supplied arguments are skipped instead of guessed. Placeholders are dropped and each publisher is capped, which took about 38.7k registry entries down to about 21k listings.",
+      },
+      {
+        title: "Every install is reversible",
+        body: "Each install creates a rollback point, major versions are never applied silently, and a lockfile restores a setup on another machine.",
+      },
+      {
+        title: "Usable by agents, not only people",
+        body: "JSON output and a stable exit-code contract, checked by an end-to-end test that drives the built binary the way a coding agent would: search, inspect, install.",
+      },
+      {
+        title: "One origin in production",
+        body: "Postgres, the API and the site run in Docker Compose on a VPS behind Caddy, which sends /v1 to the API and everything else to the site, so the website and the CLI share one origin.",
+      },
+    ],
+    result:
+      "Live at aidevkit.in since October 2026 with 30,000+ building blocks, MIT licensed and open source.",
+    stack: [
+      "TypeScript",
+      "Node.js",
+      "NestJS",
+      "Next.js",
+      "Tailwind",
+      "Postgres",
+      "PGlite",
+      "Zod",
+      "Vitest",
+      "Docker",
+      "Caddy",
+    ],
+    flow: [
+      { label: "aidev CLI", note: "search, install" },
+      { label: "Caddy", note: "/v1 to the API" },
+      { label: "Registry API", note: "NestJS + Postgres" },
+      { label: "Provider adapter", note: "Copilot, Claude Code, Codex" },
+      { label: "Config + rollback point" },
+    ],
+    links: [
+      { label: "Live site", href: "https://aidevkit.in/" },
+      {
+        label: "GitHub",
+        href: "https://github.com/jatinsh1011/ai-development-hub",
+      },
+    ],
+  },
+  {
+    slug: "tasking",
+    index: "02",
     title: "Tasking",
     kind: "SaaS · full lifecycle",
     featured: true,
@@ -92,7 +161,7 @@ export const projects: Project[] = [
   },
   {
     slug: "dependency-doctor",
-    index: "02",
+    index: "03",
     title: "Dependency Doctor",
     kind: "Developer tool · AI",
     featured: true,
@@ -155,150 +224,61 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "networklogger",
-    index: "03",
-    title: "NetworkLogger",
-    kind: "Developer tool · Chrome extension",
-    featured: false,
+    slug: "developer-tools",
+    index: "04",
+    title: "Development tools",
+    kind: "Developer tools · Chrome extension + npm CLI",
+    featured: true,
     summary:
-      "A Manifest V3 extension that records fetch, XHR, sendBeacon and form traffic so logs survive popups, closed tabs and short-lived windows.",
+      "Two tools for problems I hit in real codebases: NetworkLogger, a Chrome extension that keeps network logs when tabs and popups close, and RTL-Migrate, a published codemod that moves CSS to logical properties for right-to-left layouts.",
     problem:
-      "DevTools loses the network panel when a tab or popup closes, which is exactly when some bugs happen: OAuth popups, redirects, short-lived windows. I wanted a recorder that keeps going.",
+      "DevTools loses the network panel when a tab or popup closes, which is exactly when OAuth popups and redirects go wrong. And supporting right-to-left languages in a large codebase means touching thousands of marginLeft and paddingRight declarations, where a blind find-and-replace breaks layouts.",
     built: [
-      "A page-world script that patches fetch, XMLHttpRequest, sendBeacon and form submission to capture requests and, where the browser allows, responses.",
-      "A relay content script that forwards events to the background service worker only while recording is on.",
-      "Per-domain persistence in chrome.storage.local and JSON export of the captured logs.",
+      "NetworkLogger: a page-world script that patches fetch, XMLHttpRequest, sendBeacon and form submission to capture requests and, where the browser allows, responses.",
+      "NetworkLogger: a relay content script and a background service worker that keep per-domain logs in chrome.storage and export them as JSON.",
+      "RTL-Migrate: a CLI, rtlmigrate, published to npm as rtl-migrate-cli.",
+      "RTL-Migrate: AST-based rewriting of JS/TS style objects with Babel and recast, and PostCSS rewriting for CSS and SCSS, dry run by default.",
     ],
     decisions: [
       {
-        title: "Run in the page's own JS world",
+        title: "NetworkLogger runs in the page's own JS world",
         body: "Capture code is injected into the MAIN world so it patches the page's real network APIs; a separate isolated-world relay carries messages to the extension.",
       },
       {
-        title: "Work around MV3 limits",
+        title: "Working around MV3 limits",
         body: "Service workers cannot create object URLs, so an offscreen document builds the Blob that is then handed to the downloads API.",
       },
       {
-        title: "Be explicit about limits",
-        body: "Navigation form POST responses and cross-origin subresource bodies are not visible to page JavaScript. The tool documents that and captures timing and size where it can.",
+        title: "RTL-Migrate uses heuristics, not blind replacement",
+        body: "left and right are only converted when they look directional. Centering such as left: 50%, full-overlay positioning and off-screen hiding are left alone, and direction ternaries collapse to the logical value.",
+      },
+      {
+        title: "Safe to run on a real repo",
+        body: "Diff-first output and preserved formatting make the codemod's changes reviewable like any other pull request.",
       },
     ],
     result:
-      "A debugging tool for real web apps, deliberately upfront about what a browser lets an extension see.",
+      "One debugging tool that is upfront about what a browser lets an extension see, and one published codemod that turns a repetitive, error-prone migration into a reviewable diff.",
     stack: [
       "JavaScript",
       "Chrome Extensions",
       "Manifest V3",
-      "Service Workers",
-      "chrome.storage",
-    ],
-    flow: [
-      { label: "Page", note: "fetch / XHR / beacon" },
-      { label: "Capture script", note: "MAIN world" },
-      { label: "Relay", note: "isolated world" },
-      { label: "Service worker", note: "chrome.storage" },
-      { label: "JSON export" },
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/jatinsh1011/networkLogger" },
-    ],
-  },
-  {
-    slug: "rtl-migrate",
-    index: "04",
-    title: "RTL-Migrate",
-    kind: "Developer tool · npm CLI",
-    featured: false,
-    summary:
-      "A published CLI and codemod that migrates physical LTR CSS and CSS-in-JS properties to CSS logical properties, so layouts work in RTL.",
-    problem:
-      "Supporting right-to-left languages in a large codebase means touching thousands of marginLeft, paddingRight and left/right declarations. Doing it by hand is slow and error-prone, and a blind find-and-replace breaks layouts.",
-    built: [
-      "A CLI, rtlmigrate, published to npm as rtl-migrate-cli.",
-      "AST-based rewriting of JS/TS style objects with Babel and recast, so untouched code keeps its formatting.",
-      "PostCSS-based rewriting for CSS and SCSS files.",
-      "Dry run by default: it prints a diff and only writes files with an explicit flag.",
-    ],
-    decisions: [
-      {
-        title: "Heuristics over blind replacement",
-        body: "left and right are only converted when they look directional. Centering such as left: 50%, full-overlay positioning with all four edges at zero, and off-screen hiding are left alone.",
-      },
-      {
-        title: "Understand direction conditionals",
-        body: "Ternaries such as direction === 'ltr' ? a : b collapse to the logical value, and 4-value margin or padding shorthands are split correctly.",
-      },
-      {
-        title: "Safe to run on a real repo",
-        body: "Diff-first output and preserved formatting make the changes reviewable like any other pull request.",
-      },
-    ],
-    result:
-      "Published on npm: a repetitive, error-prone manual migration turned into a reviewable codemod.",
-    stack: [
       "Node.js",
       "Babel",
       "recast",
       "PostCSS",
-      "Commander",
-      "Vitest",
       "npm",
     ],
     flow: [
-      { label: "Glob of files" },
-      { label: "Parse", note: "Babel / PostCSS" },
-      { label: "Heuristics", note: "skip centering, overlays" },
-      { label: "Rewrite", note: "recast" },
-      { label: "Diff or write" },
+      { label: "Source", note: "page traffic / CSS files" },
+      { label: "Hook or parse", note: "MAIN world / Babel, PostCSS" },
+      { label: "Rules", note: "capture filters / RTL heuristics" },
+      { label: "Output", note: "JSON export / reviewable diff" },
     ],
     links: [
-      { label: "GitHub", href: "https://github.com/jatinsh1011/rtlMigrate" },
+      { label: "NetworkLogger", href: "https://github.com/jatinsh1011/networkLogger" },
+      { label: "RTL-Migrate", href: "https://github.com/jatinsh1011/rtlMigrate" },
       { label: "npm", href: "https://www.npmjs.com/package/rtl-migrate-cli" },
-    ],
-  },
-  {
-    slug: "fluxgate",
-    index: "05",
-    title: "FluxGate",
-    kind: "Infrastructure · reverse proxy",
-    featured: false,
-    summary:
-      "A reverse proxy and load balancer written from scratch on Node's http module, to understand what NGINX or an ALB does underneath.",
-    problem:
-      "I use reverse proxies daily and wanted to know what is inside one: streaming, balancing, health checking and rate limiting, built without a framework doing the work.",
-    built: [
-      "A streaming reverse proxy that pipes requests and responses without buffering them.",
-      "Round-robin load balancing across three backend services that skips unhealthy nodes.",
-      "Periodic health checks that mark backends up or down and bring them back when they recover.",
-      "Redis-backed rate limiting at 10 requests per 10 seconds per IP, with TTL-based reset.",
-      "A metrics endpoint exposing request counts, errors, active connections and backend health.",
-      "Proxy, backends and Redis run as containers on a private Docker network.",
-    ],
-    decisions: [
-      {
-        title: "Stream, do not buffer",
-        body: "Bodies are piped through, which keeps memory flat regardless of payload size.",
-      },
-      {
-        title: "Shared rate-limit state",
-        body: "Counters live in Redis, so limits would still hold if more than one proxy instance ran.",
-      },
-      {
-        title: "Failover without intervention",
-        body: "Health checks drive routing, so a dead backend drops out of rotation and returns on its own.",
-      },
-    ],
-    result:
-      "A learning project that made proxying, health checking and rate limiting concrete instead of something I only configure.",
-    stack: ["Node.js", "Redis", "Docker", "Docker Compose", "HTTP"],
-    flow: [
-      { label: "Client" },
-      { label: "FluxGate", note: "rate limit, metrics" },
-      { label: "Health-aware round robin" },
-      { label: "Backend x3" },
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/jatinsh1011/FluxGate" },
     ],
   },
 ];

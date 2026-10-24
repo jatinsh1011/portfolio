@@ -16,6 +16,12 @@
 		-Server
 	}
 
+	# 2026-10-24: NetworkLogger and RTL-Migrate became one "Development tools" page; FluxGate left the site
+	@oldtools path /projects/networklogger /projects/networklogger/ /projects/rtl-migrate /projects/rtl-migrate/
+	redir @oldtools /projects/developer-tools/ permanent
+	@fluxgate path /projects/fluxgate /projects/fluxgate/
+	redir @fluxgate /#projects permanent
+
 	@immutable path /_next/static/*
 	header @immutable Cache-Control "public, max-age=31536000, immutable"
 
